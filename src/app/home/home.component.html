@@ -1,0 +1,64 @@
+<div class="text-8xl font-light text-center">
+  <span style="color: antiquewhite;">Ask your <span class="text-blue-500">SuperBot</span></span>
+</div>
+<br>
+<div class="mx-auto max-w-3xl p-4">
+  <div
+    class="relative bg-gray-800 rounded-s-full rounded-e-full shadow-lg p-4 flex items-center border border-gray-600 opacity-90 transition-all duration-500"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    [class.bg-gray-700]="dragOver"
+  >
+    <!-- Textarea for prompt input -->
+    <textarea
+      placeholder="Ask your second brain..."
+      class="w-full bg-gray-800 text-2xl text-white placeholder-gray-400 border-none rounded-s-full rounded-e-full pt-8 pl-16 pr-16 py-3 h-24 resize-none focus:outline-none focus:shadow-none"
+      [(ngModel)]="inputText"
+      rows="4"
+    ></textarea>
+
+    <!-- Upload icon -->
+    <label for="file-upload" class="absolute left-8 top-18 flex items-center justify-center text-gray-400 cursor-pointer text-center">
+      <i class="fas fa-paperclip fa-2x" style="color: rgb(199, 189, 177); cursor: pointer;"></i>
+    </label>
+    <input id="file-upload" type="file" (change)="onFileSelected($event)" class="hidden">
+
+    <!-- Delete uploaded file -->
+    <button *ngIf="fileName !== ''" (click)="deleteFile()" class="absolute right-16 text-gray-400 h-full hover:text-red-500 transition duration-200">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Send button -->
+    <button (click)="submit()" class="absolute right-7 flex items-center justify-center text-gray-400 h-full hover:text-blue-500 transition duration-200">
+      <i class="fas fa-arrow-right fa-2x"></i>
+    </button>
+  </div>
+
+  <!-- File Display -->
+  <div *ngIf="fileName !== ''" class="mt-2">
+    <div class="flex items-center bg-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-600 transition duration-300" (click)="toggleFilePreview()">
+      <div class="flex items-center space-x-4">
+        <!-- File Icon -->
+        <div *ngIf="fileType === 'image'" class="h-12 w-12">
+          <img [src]="filePreview" class="h-full w-full object-cover rounded-lg" alt="Image preview">
+        </div>
+        <div *ngIf="fileType === 'other'" class="h-12 w-12 bg-gray-500 rounded-lg flex items-center justify-center text-white">
+          <i class="fas fa-file"></i>
+        </div>
+
+        <!-- File Name -->
+        <div class="text-white">
+          {{ fileName }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File Preview  -->
+  <div *ngIf="showFilePreview && fileType === 'image'" class="mt-4 bg-gray-700 p-4 rounded-lg">
+    <img [src]="filePreview" class="w-full h-auto rounded-lg" alt="Full Image preview">
+  </div>
+</div>
+
+<router-outlet></router-outlet>

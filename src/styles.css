@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+  body {
+    background: linear-gradient(180deg, #1a1a1a, #003366);
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  /* Additional styles for the component */
+  .mx-auto {
+    margin: auto;
+  }
+  .max-w-3xl {
+    max-width: 768px;
+  }
+  .p-4 {
+    padding: 1rem;
+  }
