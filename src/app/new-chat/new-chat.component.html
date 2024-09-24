@@ -1,42 +1,47 @@
-<div
-  class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
->
-  <div class="text-gray-100 text-xl">
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-16 bottom-0 w-[300px] p-2 overflow-y-auto text-center bg-gray-900 text-white">
+    <div class="text-gray-100 text-xl">
+      <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+        <i class="bi bi-house-door-fill"></i>
+        <span class="text-[15px] ml-4">{{ url }}</span>
+      </div>
+      <div class="my-2 bg-gray-600 h-[1px]"></div>
+    </div>
+
+    <!-- Sidebar Links -->
     <div class="p-2.5 mt-1 flex items-center">
-      <div class="text-s font-light text-center">
-        <span class="text-blue-500"> SuperBot </span>
+      <div class="text-xl font-light text-center">
+        <span class="text-blue-500">History</span>
       </div>
     </div>
-    <div class="my-2 bg-gray-600 h-[1px]"></div>
+
+    <!-- History of Chats -->
+    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+      <i class="bi bi-house-door-fill"></i>
+      <span class="text-[15px] ml-4">{{ url }}</span>
+    </div>
   </div>
-  <div
-    class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-  >
-    <i class="bi bi-house-door-fill"></i>
-    <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
-  </div>
-  <div
-    class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-  >
-    <i class="bi bi-house-door-fill"></i>
-    <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
-  </div>
-  <div
-    class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-  >
-    <i class="bi bi-house-door-fill"></i>
-    <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
-  </div>
-  <div
-    class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-  >
-    <i class="bi bi-house-door-fill"></i>
-    <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
-  </div>
-  <div
-    class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-  >
-    <i class="bi bi-house-door-fill"></i>
-    <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col bg-gray-100 ml-[300px] mt-16">
+    <!-- Body -->
+    <div class="flex-1 p-4 overflow-y-auto mx-28 mt-2" style="max-height: calc(100vh - 200px);">
+      <!-- Questions can be placed here -->
+      <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-xl ml-auto text-justify">{{inputText}}</div>
+
+      <!-- Answers can be placed here -->
+      <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-lg">Response</div>
+    </div>
+
+    <!-- Footer (Chat Input) -->
+    <div class="p-4 flex justify-center fixed bottom-0 left-0 right-0 ml-[300px]">
+      <textarea
+      placeholder="Ask your second brain..."
+      class="w-3/4 mx-auto bg-gray-800 text-xl text-white placeholder-gray-400 border-none rounded-s-full rounded-e-full pt-7 pl-10 pr-16 py-3 h-20 resize-none focus:outline-none focus:shadow-none"
+      rows="4"
+    ></textarea>
+    </div>
+
   </div>
 </div>

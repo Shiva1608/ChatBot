@@ -1,7 +1,8 @@
-import { Component, Renderer2, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../data-service.service';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,13 @@ export class HomeComponent {
   filePreview: string | ArrayBuffer | null = '';
   fileType: string = 'other'; // To track file type (image or other)
   showFilePreview: boolean = false; // For expanding the file preview
+  uuid: string = '';
 
-  constructor(private renderer: Renderer2, private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
+
+  generateUniqueId() {
+    this.uuid =  `id-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -88,17 +94,13 @@ export class HomeComponent {
   }
 
   submit() {
-    if (this.inputText || this.file) {
-
-      // Log input
-      console.log('Input Text:', this.inputText);
-      if (this.file) {
-        console.log('File Name:', this.fileName);
-        this.router.navigateByUrl('new-chat');
-      } else {
-        this.router.navigateByUrl('new-chat');
-        console.log('No file uploaded');
-      }
+    if (this.inputText || this.fileName) {
+      // Store inputText and fileName in the shared service
+      this.dataService.setInputText(this.inputText);
+      this.dataService.setFileName(this.fileName);
+      this.generateUniqueId();
+      // Navigate to the next page
+      this.router.navigateByUrl(this.uuid);
     } else {
       console.log('Please enter text or upload a file before submitting');
     }
