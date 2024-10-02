@@ -3,9 +3,12 @@ import { NewChatComponent } from './new-chat/new-chat.component';
 import { HomeComponent } from './home/home.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { SignupComponent } from './signup/signup.component';
+import { MemoriesComponent } from './memories/memories.component';
+
 export const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
-  {path: 'login', component: AuthenticationComponent, pathMatch: 'full'},
-  {path: 'signup', component: SignupComponent ,pathMatch:'full'},
-  { path: ':id', component: NewChatComponent, pathMatch: 'full' },
+  {path: 'login', component: AuthenticationComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'memories', component: MemoriesComponent},
+  {path: ':id', component: NewChatComponent},
+  {path: '', component: HomeComponent}
 ];

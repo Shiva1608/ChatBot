@@ -7,8 +7,6 @@ body {
   body {
     background: linear-gradient(180deg, #1a1a1a, #003366);
     min-height: 100vh;
-    justify-content: center;
-    align-items: center;
   }
 
   .relative {

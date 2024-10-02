@@ -94,17 +94,21 @@ export class HomeComponent {
   }
 
   submit() {
-    if (this.inputText || this.fileName) {
-      // Store inputText and fileName in the shared service
-      this.dataService.setInputText(this.inputText);
-      this.dataService.setFileName(this.fileName);
-      this.generateUniqueId();
-      // Navigate to the next page
-      this.router.navigateByUrl(this.uuid);
-    } else {
-      console.log('Please enter text or upload a file before submitting');
+    const formData = new FormData();
+    if (this.file !== null){
+      formData.append('file', this.file);
+      fetch('http://127.0.0.1:5001/update_pdf_vdb', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
     }
+    this.dataService.setInputText(this.inputText);
+    this.dataService.setFileName(this.fileName);
+    this.generateUniqueId();
+      // Navigate to the next page
+    this.router.navigateByUrl(this.uuid);
   }
-
-
 }

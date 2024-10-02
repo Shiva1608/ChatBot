@@ -2,15 +2,6 @@
   background-color: #374151;
 }
 
-/* Ensure proper width and height */
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
 .cursor-pointer {
   cursor: pointer;
 }

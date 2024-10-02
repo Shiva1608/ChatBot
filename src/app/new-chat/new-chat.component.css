@@ -3,3 +3,13 @@
   word-break: break-word;
   overflow-wrap: break-word;
 }
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+textarea {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
