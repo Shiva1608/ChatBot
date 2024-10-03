@@ -1,33 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { DataService } from '../data-service.service';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-chat',
   templateUrl: './new-chat.component.html',
-  imports: [RouterOutlet, CommonModule, FormsModule, NgFor],
+  imports: [RouterOutlet, CommonModule, FormsModule, NgFor, RouterLink, NgIf],
   standalone: true,
-  styleUrls: ['./new-chat.component.css']
+  styleUrls: ['./new-chat.component.css'],
 })
 export class NewChatComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private dataService: DataService) {}
+  constructor(private router: ActivatedRoute, private route: Router, private dataService: DataService) {}
 
   inputText: any = [];
   fileName: string = '';
   url: any = '';
   responses: any = [];
   prompt: string = "";
+  history: any = [];
 
   async ngOnInit() {
     // Retrieve inputText and fileName from the shared service
     this.inputText[0] = this.dataService.getInputText();
+    if (this.inputText[0] === "") {
+      this.inputText = [];
+    }
     this.fileName = this.dataService.getFileName();
     this.url = this.router.snapshot.url.join('/');
-    await this.response();
-    this.storeHistory();
+    if (this.inputText.length !== 0){
+      await this.response();
+      this.storeHistory();
+    }
+    this.getHistory();
+    this.loadChat();
+  }
+
+  routing(to: string) {
+    this.route.navigateByUrl(to);
+  }
+
+  async voice(text: string) {
+    console.log(text);
+
   }
 
   nextQuery() {
@@ -35,6 +52,26 @@ export class NewChatComponent implements OnInit {
     this.response();
     this.storeHistory();
     this.prompt = "";
+  }
+
+  async getHistory() {
+    const response = await fetch(
+      "http://127.0.0.1:5001/get_chat?userid=1003",
+    )
+    const res = await response.json()
+    this.history = res;
+  }
+
+  async loadChat() {
+    const response = await fetch(
+      "http://127.0.0.1:5001/get_current_chat?userid=1003&chatid=" + this.url,
+    )
+    const res = await response.json()
+    console.log(res);
+    for (let i of res) {
+      this.inputText.push(i['question'])
+      this.responses.push(i['answer'])
+    }
   }
 
   async storeHistory() {
