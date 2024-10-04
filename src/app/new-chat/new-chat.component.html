@@ -38,9 +38,13 @@
         <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-xl ml-auto text-justify">{{ question }}</div>
 
         <!-- Answers can be placed here -->
-        <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-lg relative">
-          {{ responses[index] }}
-          <i (click)="voice(responses[index])" class="fa-solid fa-volume-high ml-1 mt-2" style="color: #000000; cursor: pointer;"></i>
+        <div *ngIf="responses[index]">
+          <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-lg relative flex">
+            <span>{{ responses[index] }} </span>
+            <br><br>
+            <!-- <i (click)="voice(responses[index])" class="fa-solid fa-volume-high ml-1 mt-2" style="color: #000000; cursor: pointer;"></i> -->
+            <i (click)="copyToClipboard(responses[index])" class="fa-solid fa-copy ml-auto" style="color: #000000; cursor: pointer;" title="Copy to clipboard"></i>
+          </div>
         </div>
 
       </div>

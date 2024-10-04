@@ -38,6 +38,15 @@ export class NewChatComponent implements OnInit {
     this.loadChat();
   }
 
+  copyToClipboard(message: string): void {
+  navigator.clipboard.writeText(message).then(() => {
+    console.log('Message copied to clipboard:', message);
+    // Optionally, you can show a notification or alert here
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
+
   routing(to: string) {
     this.route.navigateByUrl(to);
   }
