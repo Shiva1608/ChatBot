@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 import { DataService } from '../data-service.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MarkdownWrapperModule } from '../app.markdown';
 
 @Component({
   selector: 'app-new-chat',
   templateUrl: './new-chat.component.html',
-  imports: [RouterOutlet, CommonModule, FormsModule, NgFor, RouterLink, NgIf],
+  imports: [RouterOutlet, CommonModule, FormsModule, NgFor, RouterLink, NgIf, MarkdownWrapperModule],
   standalone: true,
   styleUrls: ['./new-chat.component.css'],
 })

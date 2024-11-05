@@ -4,6 +4,12 @@
   overflow-wrap: break-word;
 }
 
+markdown {
+  color: white; /* Adjust text color for visibility */
+  font-size: 16px; /* Adjust font size */
+  margin: 1rem; /* Add some margin for spacing */
+}
+
 textarea::-webkit-scrollbar {
   width: 0px;
 }

@@ -1,4 +1,4 @@
-<div class="flex h-screen">
+m<div class="flex h-screen">
   <!-- Sidebar -->
   <div class="sidebar fixed top-16 bottom-0 w-[300px] p-2 overflow-y-auto text-center bg-gray-900 text-white">
     <div class="text-gray-100 text-xl">
@@ -35,12 +35,12 @@
 
       <div *ngFor="let question of inputText; let index = index;">
         <!-- Questions can be placed here -->
-        <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-xl ml-auto text-justify">{{ question }}</div>
+        <div class="chat-message bg-slate-750 border rounded-s-full rounded-e-full text-white p-3 rounded-lg mb-3 max-w-xl ml-auto text-justify">{{ question }}</div>
 
         <!-- Answers can be placed here -->
-        <div class="chat-message bg-blue-200 p-3 rounded-lg mb-3 max-w-lg relative">
-          {{ responses[index] }}
-          <i (click)="voice(responses[index])" class="fa-solid fa-volume-high ml-1 mt-2" style="color: #000000; cursor: pointer;"></i>
+        <div class="chat-message bg-slate-750 border  rounded rounded text-white p-3 rounded-lg mb-3 max-w-lg relative">
+          <div markdown [data]="responses[index]"></div>
+          <i (click)="voice(responses[index])" class="fa-solid fa-volume-high ml-1 mt-2" style="color:white; cursor: pointer;"></i>
         </div>
 
       </div>
@@ -52,7 +52,7 @@
       <textarea
       [(ngModel)]="prompt"
       placeholder="Ask your second brain..."
-      class="w-3/4 mx-auto bg-gray-800 text-xl text-white placeholder-gray-400 border-none rounded-s-full rounded-e-full pt-7 pl-10 pr-16 py-3 h-20 resize-none focus:outline-none focus:shadow-none"
+      class="w-3/4 mx-auto bg-gray-800  text-xl text-white placeholder-gray-400 border-none rounded-s-full rounded-e-full pt-7 pl-10 pr-16 py-3 h-20 resize-none focus:outline-none focus:shadow-none"
       rows="4"
     ></textarea>
 
