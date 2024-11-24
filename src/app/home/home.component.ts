@@ -111,4 +111,10 @@ export class HomeComponent {
       // Navigate to the next page
     this.router.navigateByUrl(this.uuid);
   }
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();  // Prevents a new line from being added
+      this.submit();  // Call your submit function
+    }
+  }
 }

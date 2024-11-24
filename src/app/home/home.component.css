@@ -7,3 +7,28 @@ textarea {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+
+.magicWrite {
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(to right, white, #2196F3); /* White to blue gradient */
+  background-clip: text;
+  color: transparent;
+  border-right: 2px solid white; /* Typing cursor */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}

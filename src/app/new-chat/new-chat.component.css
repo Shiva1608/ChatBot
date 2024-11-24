@@ -1,21 +1,43 @@
-.chat-message{
+.chat-message {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
 markdown {
-  color: white; /* Adjust text color for visibility */
-  font-size: 16px; /* Adjust font size */
-  margin: 1rem; /* Add some margin for spacing */
+  color: white;
+  font-size: 16px;
+  margin: 1rem;
 }
 
-textarea::-webkit-scrollbar {
-  width: 0px;
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
 }
 
-textarea {
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4a5568;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #718096;
 }
